@@ -6,52 +6,169 @@
     <link rel="stylesheet" href="style.css">
     <title>Home</title>
     <link rel="shortcut icon" href="images/trojan-horse1.png" type="image/x-icon">
+    <style>
+        * {
+            background: #292826;
+            font-family: monospace;
+            display: auto;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: monospace;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .hero {
+            position: top;
+            width: 100%;
+            height: 100vh;
+            background: #292826;
+            font-weight: bold;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .hero:hover {
+            background-color: rgba(#292826);
+        }
+
+        .hero h1{
+            font-size: 3rem;
+            font-weight: bold;
+            font-family: courier;
+            color: rgba(255, 255, 135, 0.671);
+            text-align: center;
+            margin-right: 680px;
+        }
+
+        .sidekick {
+            position: relative;
+            top: 170px;
+            right: -130px;
+            display: inline-block;
+            font-size: 25px;
+            color: white;
+            align-items: center;
+            font-family: monospace;
+        }
+
+        .profile-image {
+            box-shadow: 0px 0px 100px rgba(255, 255, 135, 0.5), 0px 0px 30px rgba(255, 255, 135, 0.3);
+            border-radius: 50%;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 9px;
+        }
+
+        .button-container a {
+            margin: 0;
+        }
+
+        .button-container a img {
+            width: 35px;
+            height: 35px;
+        }
+
+        .button-container a:hover img {
+            opacity: 0.8;
+            transform: scale(1.2);
+            border-radius: 50px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            width: 95%;
+            margin: auto;
+            padding: 2% 0;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 5px 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, .9);
+            border: 2px solid #292826;
+            padding: 12px 25px;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 135, 0.05);
+            transition: color 0.3s ease; 
+        }
+
+        nav ul li a:hover {
+            color: rgb(255, 255, 135); 
+            box-shadow: 0px 0px 27px rgba(255, 255, 135, 0.2);
+        }
+        
+        footer {
+            color: white;
+            background: #29282600;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .button-container a img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .profile-image {
+                width: 120px; 
+                height: 120px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-    <section>
-    <div class="hero">
-        <nav>
-            <img src="images/trojan.png" alt="logo?" style="padding-left: 60px; padding-top: 0px; width: 300px; height: 100px;">
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="about.php">ABOUT ME</a></li>
-                    <li><a href="project.html">PROJECTS</a></li>
-                    <li><a href="skills.html">SKILLS</a></li>
-                    <li><a href="contact_me.html">CONTACT ME</a></li>
-
-                </ul>
-            </nav>
-            <p style="color: aliceblue; opacity: 10%; text-align: right; font-size: large;" >_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________ <br> _______________________________________________________________</p>
-        <div class="sidekick">
-            <p >Hello, I'm </p>
-            <p><h1>ROJAN TERCERO</h1></p>
-            <p >I'm a 2nd year IT student passionate about <br> exploring Motion and Visual Graphic Design.</p>
-            <br>
-            <div class= "button-container" style="position: absolute; left: 0px;">
-                <a href="https://github.com/RojanTERCERO" target="_blank"><img src="images/githubpic.png" alt="Rojan's GitHub"></a>
-                    <a href="https://web.facebook.com/profile.php?id=100080300804429" target="_blank"><img src="images/facebook.png" alt="Rojan's Facebook"> </a>
-                        <a href="https://www.instagram.com/aint_rjn/" target="_blank"> <img src="images/instagram.png" alt="Rojan's Facebook"></a>
-                            <a href="https://www.linkedin.com/in/rojikicx616/" target="_blank"><img src="images/linkedin.png" alt="Rojan's Facebook"></a>
-                        </div>   
-
-
+        <section>
+            <div class="hero">
+                <nav>
+                    <img src="images/trojan.png" alt="logo?" style="padding-left: 60px; padding-top: 0px; width: 300px; height: 100px;">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about.php">ABOUT ME</a></li>
+                        <li><a href="project.html">PROJECTS</a></li>
+                        <li><a href="skills.html">SKILLS</a></li>
+                        <li><a href="contact_me.html">CONTACT ME</a></li>
+                    </ul>
+                </nav>
+                <p style="color: aliceblue; opacity: 10%; text-align: right; font-size: large;">_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________ <br> _______________________________________________________________</p>
+                <div class="sidekick">
+                    <p>Hello, I'm</p>
+                    <h1>ROJAN TERCERO</h1>
+                    <p>I'm a 2nd year IT student passionate about<br>exploring Motion and Visual Graphic Design.</p>
+                    <br>
+                    <div class="button-container">
+                        <a href="https://github.com/RojanTERCERO" target="_blank"><img src="images/githubpic.png" alt="Rojan's GitHub"></a>
+                        <a href="https://web.facebook.com/profile.php?id=100080300804429" target="_blank"><img src="images/facebook.png" alt="Rojan's Facebook"></a>
+                        <a href="https://www.instagram.com/aint_rjn/" target="_blank"> <img src="images/instagram.png" alt="Rojan's Instagram"></a>
+                        <a href="https://www.linkedin.com/in/rojikicx616/" target="_blank"><img src="images/linkedin.png" alt="Rojan's LinkedIn"></a>
                     </div>
-                </section> 
-                <section>
-                    <img src="images/rojanpic1.jpg" alt="" class="profile-image" style="border-radius: 50%; position: absolute; top: 300px; left: 900px;" width="450" height="450"></div> 
-                </header>
+                </div>
+            </div>
+        </section> 
+        <section>
+            <img src="images/rojanpic1.jpg" alt="" class="profile-image" style="border-radius: 50%; position: absolute; top: 300px; left: 900px;" width="450" height="450">
+        </section>
+    </header>
 
-                <footer style="color: white; text-align: center;">
-        
-                    <p style="color: aliceblue; opacity: 10%; text-align: right; font-size: large;" > _______________________________________________________<br>__________________________________________________________________________________________________________________________________<br>_________________________________________________________________________________________________________________________________________________________________________</p>
-
-                    <p>&copy; Webpage ni Rojan 2024</p>
-                </footer>
-    
-    
-            
-                </section>
-        </body>    
-</section>
+    <footer>
+        <p style="color: aliceblue; opacity: 10%; text-align: right; font-size: large;">_______________________________________________________<br>__________________________________________________________________________________________________________________________________<br>_________________________________________________________________________________________________________________________________________________________________________</p>
+        <p>&copy; Webpage ni Rojan 2024</p>
+    </footer>
+</body>
 </html>
