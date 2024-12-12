@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio with PHP File Handling</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <style>
+        /* General Reset */
+        @keyframes gradient-animation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+        }
+
+        body {
+        background: linear-gradient(270deg, #ff7eb3, #ff758c, #f4a261, #84fab0);
+        background-size: 800% 800%;
+        animation: gradient-animation 10s ease infinite;
+        }
+
+        a {
+            text-decoration: #0019FF;
+            color: inherit;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: linear-gradient(90deg, #3510f1, #000000);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color:aqua;
+            margin-bottom: 20px;
+        }
+
+        .navbar {
+            background:#000000;
+            color: #fff;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-grow: 1;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff6a;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+            box-shadow: 0 0 30px #0019FF;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .home {
+            background: #2a2a2a;  /* Dark gray background */
+            color: #fff;
+            text-align: center;
+            padding: 200px 20px;
+        }
+
+        .home .highlight {
+            color: #00ff6a;
+        }
+
+        .btn {
+            background: #00ff6a;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background:#808080 ; 
+
+        }
+
+        .about {
+            background: #f3f3f3;  
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+            padding: 100px 10px;
+        }
+
+        .about img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .about-content {
+            flex: 1;
+            margin-left: 40px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-item {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .projects {
+            background:#808080 ; 
+            padding: 250px 10px;
+        }
+
+        .skills {
+            background:#808080 ; 
+            color: #fff;
+            padding: 200px 10px;
+        }
+
+        .contact {
+            background: #333;  
+            color: #fff;
+            padding: 200px 10px;
+        }
+
+        footer {
+            background: #0505ff;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+        }
+
+        img {
+            width: 150px; 
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        
+        .social-links-floating {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-links-floating img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .social-links-floating img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="my-pic.jpg" alt="Profile Picture" class="profile-pic">
+        <div class="logo">My Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section home">
+        <div class="container">
+            <img src="my-pic.jpg" alt="Profile Picture">
+            <h2>Welcome</h2>
+            <p>I'm Dotong, John Mark D.<br> a <span class="highlight">2nd Year Student</span> and I am studying at the Universidad de Dagupan. <br>I'm passionate about creating modern, responsive websites.</p>
+            <a href="#contact" class="btn">Hire Me</a>
+        </div>
+    </section>
+
+    <!-- Social Media Links -->
+    <div class="social-links-floating">
+        <a href="https://www.facebook.com" target="_blank">
+            <img src="facebook-logo.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+            <img src="Instagram-Logo.png" alt="Instagram">
+        </a>
+        <a href="https://www.twitter.com" target="_blank">
+            <img src="twitter-logo.jpg" alt="Twitter">
+        </a>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container about">
+            <img src="my-pic.jpg" alt="Profile Picture">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p id="about-text">
+                    2nd Year Student <br> 
+                    Birthday: 2002-01-10 <br> 
+                    Age: 22 <br>
+                    Website: facebook.com <br> 
+                    Degree: None <br>
+                    Phone: 09991914151 <br> 
+                    Email: markdotong699@gmail.com <br>
+                   Municipality: San Fabian <br> 
+                    Freelance: Available
+                </p>
+                <textarea id="about-textarea" style="display: none; width: 100%; height: 200px;">
+                    2nd Year Student 
+                    Birthday: 2002-01-10
+                    Age: 22
+                    Website: facebook.com 
+                    Degree: None 
+                    Phone: 09991914151
+                    Email: markdotong699@gmail.com 
+                    Municipality: San Fabian
+                    Freelance: Available
+                </textarea>
+                <button id="edit-btn" class="btn" onclick="toggleEdit()">Edit</button>
+                <button id="save-btn" class="btn" style="display: none;" onclick="saveChanges()">Save</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Function to toggle between edit and view modes
+        function toggleEdit() {
+            const aboutText = document.getElementById('about-text');
+            const aboutTextarea = document.getElementById('about-textarea');
+            const editBtn = document.getElementById('edit-btn');
+            const saveBtn = document.getElementById('save-btn');
+
+            if (editBtn.innerText === "Edit") {
+                // Switch to edit mode
+                aboutText.style.display = "none";
+                aboutTextarea.style.display = "block";
+                editBtn.style.display = "none";
+                saveBtn.style.display = "inline-block";
+            }
+        }
+
+        // Function to save changes to the "About Me" section
+        function saveChanges() {
+            const aboutText = document.getElementById('about-text');
+            const aboutTextarea = document.getElementById('about-textarea');
+            const editBtn = document.getElementById('edit-btn');
+            const saveBtn = document.getElementById('save-btn');
+
+            // Get the updated content from the textarea
+            const updatedContent = aboutTextarea.value;
+
+            // Set the updated content to the paragraph and hide the textarea
+            aboutText.innerHTML = updatedContent.replace(/\n/g, "<br>");
+
+            // Switch back to view mode
+            aboutText.style.display = "block";
+            aboutTextarea.style.display = "none";
+            editBtn.style.display = "inline-block";
+            saveBtn.style.display = "none";
+        }
+    </script>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <h3>Project 1</h3>
+                    <img src="" alt="Project 1" style="width: 100%; border-radius: 5px;">
+                    <p>A description of project 1.</p>
+                </div>
+                <div class="project-item">
+                    <h3>Project 2</h3>
+                    <img src="" alt="Project 2" style="width: 100%; border-radius: 5px;">
+                    <p>A description of project 2.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+<section id="skills" class="section skills">
+    <div class="container">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <p>Good Sports</p>
+            </div>
+            <div class="skill-box">
+                <p>Communication</p>
+            </div>
+            <div class="skill-box">
+                <p>Adaptive</p>
+            </div>
+            <div class="skill-box">
+                <p>Hard Working</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .skill-box {
+        background-color: #fff;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        border: 2px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .skill-box p {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .skill-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <?php if (isset($messageStatus)) { echo "<p>$messageStatus</p>"; } ?>
+            <form action="" method="POST">
+                <label>Name</label>
+                <input type="text" name="name" required>
+                <label>Email</label>
+                <input type="email" name="email" required>
+                <label>Message</label>
+                <textarea name="message" required></textarea>
+                <button type="submit" class="btn">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 My Portfolio. 23-0987-444.</p>
+        </div>
+    </footer>
+</body>
+</html>
