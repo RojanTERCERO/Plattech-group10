@@ -3,9 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f06, #4a90e2);
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: #fff;
+            color: #4a90e2;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #f06;
+            color: #fff;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
-    <h1>hello world, goodbye1</h1>
+    <header>
+        <div class="button-container">
+            <a href="http://192.168.100.13/" class="btn">Go back from the start?</a>   
+         </div>
+    
+    </header>
+    <h1>Welcome to Our Landing Page!</h1>
+    <div class="button-container">
+        <a href="rojan.html" class="btn">ROJAN</a>
+        <a href="dotong.html" class="btn">DOTONG</a>
+        <a href="angelo.html" class="btn">ANGELO</a>
+        <a href="jhayson.html" class="btn">JHAYSON</a>   
+     </div>
+
+    <section id="about" style="margin-top: 50px; text-align: center;">
+        <h2>GROUP 10 21-ITE-02</h2>
+        <h1>PLATFORM TECHNOLOGIES</h1>
+    </section>
+
 </body>
 </html>
